@@ -7,8 +7,79 @@
     <title>Document</title> 
     <link rel="stylesheet" href="style.css" />
   </head>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+video {  
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.main-container{
+  /* display: none; */
+}
+
+.bt-parent{
+  justify-content: center;
+  align-items:center;
+  height: 100vh;
+}
+
+.btn{
+  display: none;
+}
+
+body{
+  height: 100%;
+    overflow: hidden;
+}
+
+.location{
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  color: black;
+  font: 1em sans-serif;
+  z-index: 5;
+  padding: 10px 10px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.fa-solid{
+  color: red;
+}
+
+</style>
+
   <body>
-    <div class="main-container">
+
+
+      <div id="video">
+        <video poster="poster.jpg" autoplay playsinline muted >
+          <source src="images/KEC Map.mp4" type="video/mp4">
+        </video>
+    
+        <div class="text-center d-flex bt-parent">
+          <button class="btn btn-warning py-2 px-3" onclick="myfunc()" id="btn">
+            Go to Gate 6
+          </button>
+        </div>
+      </div>
+
+    <div class="location">
+      <i class="fa-sharp fa-solid fa-location-dot"></i> Your are <span id="loc"></span>
+    </div>
+
+    <div class="main-container" id="main">
       <!-- <h1>Hi, Welcome</h1> -->
 
  
@@ -27,10 +98,29 @@
     <script src="
 https://cdn.jsdelivr.net/npm/panolens@0.12.1/build/panolens.min.js
 "></script>
+
+
+
     <script src="js/panolens.min.js"></script>
     <!-- <script src="js/three.min.js"></script> -->
     <!-- <script src="js/infospot.min.js"></script> -->
 
     <script src="main.js"></script>
+
+    <script>
+      setTimeout(()=>{
+        document.getElementById("btn").style.display="block";
+      }, 12900)
+
+      
+
+
+      // Set the text to be spoken
+// var text = "Hello, this is a sample text.";
+
+// // Speak the text
+// responsiveVoice.speak(text);
+    </script>
+   
   </body>
 </html>

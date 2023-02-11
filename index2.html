@@ -1,62 +1,27 @@
 <html>
-  <head>
-    <style>
-      .image-container {
-        width: 100%;
-        height: 500px;
-      }
-    </style>
-  </head>
+  <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
   <body>
-    <div class="image-container"></div>
-    <script src="https://cdn.jsdelivr.net/npm/panolens@0.7.2/build/panolens.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/panolens@0.7.2/build/panolens.min.js"></script>
-    <script src="js/three.min.js"></script>
-    <script src="js/panolens.min.js"></script>
-    <script>
-      // Create the panoramic image
-      const panoramaImage = new PANOLENS.ImagePanorama("images/image.jpg");
-      const imageContainer = document.querySelector(".image-container");
-      
-
-      // Create the viewer
-      const viewer = new PANOLENS.Viewer({
-        container: imageContainer,
-        autoRotate: true,
-        autoRotateSpeed: 0.3,
-        controlBar: false,
-      });
-
-      // Add the image to the viewer
-      viewer.add(panoramaImage);
-
-      // Create the button
-      const button = document.createElement("button");
-      button.innerHTML = "Click me";
-      button.style.position = "absolute";
-      button.style.backgroundColor = "orange";
-      button.style.color = "white";
-      button.style.padding = "10px 20px";
-      button.style.border = "none";
-      button.style.borderRadius = "5px";
-      button.style.cursor = "pointer";
-
-      // Add the button to the DOM
-      imageContainer.appendChild(button);
-
-      // Update the button position as the image rotates
-      viewer.addEventListener("update", function () {
-        var vector = new THREE.Vector3();
-
-        vector.setFromMatrixPosition( button.matrixWorld );
-        vector.project( viewer.camera );
-
-        button.style.left = ( ( vector.x * .5 + .5 ) * imageContainer.clientWidth ) + "px";
-        button.style.top = ( - ( vector.y * .5 - .5 ) * imageContainer.clientHeight ) + "px";
-
-        // Keep the button always in front of the camera
-        button.style.zIndex = 1;
-      });
-    </script>
+    Progress: <span id="progress">0</span>
+    <div class="container">
+      <input
+        id="url"
+        value="https://tesseract.projectnaptha.com/img/eng_bw.png"
+      />
+      <button onclick="onCovert()">Convert URL Image</button>
+    </div>
+    <div class="container">
+      <img id="output" src="" width="100" height="100" />
+      <input
+        name="photo"
+        type="file"
+        accept="image/*"
+        onchange="onImageChange(this.files[0])"
+      />
+    </div>
+    <div class="container">
+      <p id="text"></p>
+      <button onclick="read()">Read</button>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
