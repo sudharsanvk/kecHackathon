@@ -54,8 +54,43 @@ body{
   margin: 20px;
 }
 
+.hi{
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.button{
+  pointer-events: none;
+  cursor:pointer
+}
+
 .fa-solid{
   color: red;
+}
+
+.btn{
+  display: none;
+  margin-top: 400px;
+  color:red ;
+  
+}
+
+
+button {
+  background-color: #001DAD; /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+}
+
+.location{
+  display: none;
 }
 
 </style>
@@ -69,14 +104,19 @@ body{
         </video>
     
         <div class="text-center d-flex bt-parent">
-          <button class="btn btn-warning py-2 px-3" onclick="myfunc()" id="btn">
-            Go to Gate 6
+
+          <button class="btn btn-danger btn-lg active" onclick="myfunc()" id="btn">
+            Move to Gate 6
           </button>
         </div>
       </div>
 
-    <div class="location">
+
+    <div class="location" id="move">
       <i class="fa-sharp fa-solid fa-location-dot"></i> Your are <span id="loc"></span>
+      
+      <!-- <button onclick="show()">Show</button> -->
+      
     </div>
 
     <div class="main-container" id="main">
@@ -84,11 +124,18 @@ body{
 
  
       <div class="image-container">
+
+        <button class="hi button">Show / Hide</button>
+
+        <!-- <div class="hi">
+          <h4>Click this empty space</h4>
+        </div> -->
+        
         <!-- <button class="pulse-button">l̥ō</button> -->
       </div>
       
     </div>
-
+0
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"
       integrity="sha512-uWKImujbh9CwNa8Eey5s8vlHDB4o1HhrVszkympkm5ciYTnUEQv3t4QHU02CUqPtdKTg62FsHo12x63q6u0wmg=="
@@ -112,14 +159,9 @@ https://cdn.jsdelivr.net/npm/panolens@0.12.1/build/panolens.min.js
         document.getElementById("btn").style.display="block";
       }, 12900)
 
+
+
       
-
-
-      // Set the text to be spoken
-// var text = "Hello, this is a sample text.";
-
-// // Speak the text
-// responsiveVoice.speak(text);
     </script>
    
   </body>
